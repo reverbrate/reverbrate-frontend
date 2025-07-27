@@ -1,9 +1,9 @@
-import { ReviewsResponse } from "@/types/reviews";
-import { TrackWithReview } from "@/types/search";
-import { Pagination } from "antd";
-import { useState } from "react";
-import MusicItem from "../musicItem/musicItem";
-import styles from "./styles.module.scss";
+import { ReviewsResponse } from '@/types/reviews';
+import { TrackWithReview } from '@/types/search';
+import { Pagination } from 'antd';
+import { useState } from 'react';
+import MusicItem from '../musicItem/musicItem';
+import styles from './styles.module.scss';
 
 interface ReviewListProps {
   title: string;
@@ -27,9 +27,7 @@ export default function ReviewList({ title, reviews }: ReviewListProps) {
       <h3>{title}</h3>
       <div className={styles.wrapper}>
         {currentReviews.length <= 0 ? (
-          <i className={styles.noReviews}>
-            Você ainda não possui avaliações...
-          </i>
+          <i className={styles.noReviews}>Você ainda não possui avaliações...</i>
         ) : (
           currentReviews.map((review) => {
             const trackWithReview: TrackWithReview = {
@@ -37,8 +35,8 @@ export default function ReviewList({ title, reviews }: ReviewListProps) {
               cover: review.track_info.cover,
               id: review.track_info.id,
               name: review.track_info.name,
-              uri: "",
-              type: "track",
+              uri: '',
+              type: 'track',
               review: {
                 rate: review.rate,
                 comment: review.comment,
@@ -46,9 +44,7 @@ export default function ReviewList({ title, reviews }: ReviewListProps) {
                 updated_at: review.updated_at,
               },
             };
-            return (
-              <MusicItem key={trackWithReview.id} track={trackWithReview} />
-            );
+            return <MusicItem key={trackWithReview.id} track={trackWithReview} />;
           })
         )}
       </div>

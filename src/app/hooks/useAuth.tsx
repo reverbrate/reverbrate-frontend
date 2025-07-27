@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { AuthApi } from "@/infra/api/auth";
-import { SignUpData } from "@/types/auth";
-import { useMutation } from "@tanstack/react-query";
+import { AuthApi } from '@/infra/api/auth';
+import { SignUpData } from '@/types/auth';
+import { useMutation } from '@tanstack/react-query';
 
 export function useAuth() {
   const tokenMutation = useMutation({
     mutationFn: () => AuthApi.token(),
 
     onSuccess: (data) => {
-      console.log("Login bem-sucedido!", data.access_token);
+      console.log('Login bem-sucedido!', data.access_token);
     },
     onError: (error) => {
-      console.error("Falha no login:", error);
+      console.error('Falha no login:', error);
     },
   });
 
@@ -22,6 +22,6 @@ export function useAuth() {
 
   return {
     tokenMutation,
-    signUp
+    signUp,
   };
 }

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import CardList from "./cardList/cardList";
-import styles from "./styles.module.scss";
-import { List as ListType } from "@/types/lists";
-import { PlusIcon } from "@phosphor-icons/react";
-import ListForm from "./listForm/listForm";
-import { Pagination } from "antd";
+import React, { useState } from 'react';
+import CardList from './cardList/cardList';
+import styles from './styles.module.scss';
+import { List as ListType } from '@/types/lists';
+import { PlusIcon } from '@phosphor-icons/react';
+import ListForm from './listForm/listForm';
+import { Pagination } from 'antd';
 
 export interface ListProps {
   title: string | undefined;

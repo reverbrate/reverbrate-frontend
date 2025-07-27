@@ -1,13 +1,13 @@
-import NavBar from "../components/navBar/navBar";
-import SearchContainer from "../components/search/searchContainer/SearchContainer";
+import NavBar from '../components/navBar/navBar';
+import SearchContainer from '../components/search/searchContainer/SearchContainer';
 
 export default async function Home() {
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <main style={{ padding: '20px' }}>
         <SearchContainer />
       </main>
     </>
   );
-} 
+}

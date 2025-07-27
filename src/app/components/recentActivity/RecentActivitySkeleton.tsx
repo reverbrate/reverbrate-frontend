@@ -1,5 +1,5 @@
-import React from "react";
-import style from "./styles.module.scss";
+import React from 'react';
+import style from './styles.module.scss';
 
 export default function RecentActivitySkeleton() {
   return (
@@ -19,4 +19,4 @@ export default function RecentActivitySkeleton() {
       ))}
     </div>
   );
-} 
+}

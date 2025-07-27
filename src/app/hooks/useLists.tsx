@@ -1,25 +1,21 @@
-"use client";
+'use client';
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  CreateListRequest,
-  UpdateListRequest,
-  EditListItemsRequest,
-} from "@/types/lists";
-import { listApi } from "@/infra/api/list";
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { CreateListRequest, UpdateListRequest, EditListItemsRequest } from '@/types/lists';
+import { listApi } from '@/infra/api/list';
 
 export function useLists() {
   const queryClient = useQueryClient();
 
   const fetchLists = (limit = 20, offset = 0) =>
     useQuery({
-      queryKey: ["list_profile"],
+      queryKey: ['list_profile'],
       queryFn: () => listApi.getList(limit, offset),
     });
 
   const fetchListById = (id: string) =>
     useQuery({
-      queryKey: ["lists", "byId", id],
+      queryKey: ['lists', 'byId', id],
       queryFn: () => listApi.getListById(id),
       enabled: !!id,
     });
@@ -28,7 +24,7 @@ export function useLists() {
     mutationFn: (data: CreateListRequest) => listApi.createList(data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["list_profile"],
+        queryKey: ['list_profile'],
       });
     },
   });
@@ -38,7 +34,7 @@ export function useLists() {
       listApi.updateList(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["list_profile"],
+        queryKey: ['list_profile'],
       });
     },
   });
@@ -47,7 +43,7 @@ export function useLists() {
     mutationFn: (id: string) => listApi.deleteList(id),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["list_profile"],
+        queryKey: ['list_profile'],
       });
     },
   });

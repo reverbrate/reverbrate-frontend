@@ -1,19 +1,15 @@
-"use client";
+'use client';
 
-import "./globals.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
-import { SearchProvider } from "./contexts/SearchContext";
-import "@ant-design/v5-patch-for-react-19";
-import { Toaster } from "react-hot-toast";
-import { PlayerProvider } from "./contexts/PlayerContext";
-import { AuthProvider } from "./contexts/AuthContext";
+import './globals.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useState } from 'react';
+import { SearchProvider } from './contexts/SearchContext';
+import '@ant-design/v5-patch-for-react-19';
+import { Toaster } from 'react-hot-toast';
+import { PlayerProvider } from './contexts/PlayerContext';
+import { AuthProvider } from './contexts/AuthContext';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -23,7 +19,7 @@ export default function RootLayout({
             retry: 1,
           },
         },
-      })
+      }),
   );
 
   return (

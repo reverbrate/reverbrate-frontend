@@ -1,12 +1,12 @@
-import AddListModal from "@/app/components/list/addListModal/addListModal";
-import { TrackWithReview } from "@/types/search";
-import { DotsThreeIcon, TextAlignLeftIcon } from "@phosphor-icons/react";
-import { Dropdown, Tooltip } from "antd";
-import Image from "next/image";
-import { useState } from "react";
-import Item from "../base/item/item";
-import BaseReview from "../review/review";
-import styles from "./styles.module.scss";
+import AddListModal from '@/app/components/list/addListModal/addListModal';
+import { TrackWithReview } from '@/types/search';
+import { DotsThreeIcon, TextAlignLeftIcon } from '@phosphor-icons/react';
+import { Dropdown, Tooltip } from 'antd';
+import Image from 'next/image';
+import { useState } from 'react';
+import Item from '../base/item/item';
+import BaseReview from '../review/review';
+import styles from './styles.module.scss';
 
 interface MusicItemProps {
   track: TrackWithReview;
@@ -16,12 +16,8 @@ export default function MusicItem({ track }: MusicItemProps) {
 
   const menuItems = [
     {
-      key: "add-to-list",
-      label: (
-        <span onClick={() => setAddToListModalOpen(true)}>
-          Adicionar à lista
-        </span>
-      ),
+      key: 'add-to-list',
+      label: <span onClick={() => setAddToListModalOpen(true)}>Adicionar à lista</span>,
     },
   ];
 
@@ -30,7 +26,7 @@ export default function MusicItem({ track }: MusicItemProps) {
       <div className={styles.infoWrapper}>
         <Image
           src={track.cover}
-          alt={"Capa do album da musica" + track.name}
+          alt={'Capa do album da musica' + track.name}
           width={60}
           height={60}
           className={styles.image}
@@ -51,12 +47,7 @@ export default function MusicItem({ track }: MusicItemProps) {
           </Tooltip>
         )}
         <BaseReview track={track} />
-        <Dropdown
-          menu={{ items: menuItems }}
-          trigger={["click"]}
-          placement="bottomRight"
-          arrow
-        >
+        <Dropdown menu={{ items: menuItems }} trigger={['click']} placement="bottomRight" arrow>
           <button className={styles.optionBtn}>
             <DotsThreeIcon size={28} />
           </button>
@@ -75,12 +66,7 @@ export default function MusicItem({ track }: MusicItemProps) {
               <TextAlignLeftIcon size={24} />
             </Tooltip>
           )}
-          <Dropdown
-            menu={{ items: menuItems }}
-            trigger={["click"]}
-            placement="bottomRight"
-            arrow
-          >
+          <Dropdown menu={{ items: menuItems }} trigger={['click']} placement="bottomRight" arrow>
             <button className={styles.optionBtn}>
               <DotsThreeIcon size={28} />
             </button>

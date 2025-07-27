@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React from "react";
-import { TrackWithReview, AlbumItem, ArtistItem } from "@/types/search";
-import styles from "./styles.module.scss";
-import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-import TracksResult from "./tracks/tracksResult";
-import BestResult from "./bestResult/bestResult";
-import AlbumsResult from "./albumResult/albumResult";
-import ArtistsResult from "./artistResult/artistResult";
+import React from 'react';
+import { TrackWithReview, AlbumItem, ArtistItem } from '@/types/search';
+import styles from './styles.module.scss';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import TracksResult from './tracks/tracksResult';
+import BestResult from './bestResult/bestResult';
+import AlbumsResult from './albumResult/albumResult';
+import ArtistsResult from './artistResult/artistResult';
 import UserResult from './userResult';
 import { UserSearchResult } from '@/types/user';
 
@@ -38,14 +38,7 @@ export default function SearchResults({
     return (
       <div className={styles.container}>
         <div className={styles.loading}>
-          <Spin
-            indicator={
-              <LoadingOutlined
-                style={{ fontSize: 40, color: "#7C6AA0" }}
-                spin
-              />
-            }
-          />
+          <Spin indicator={<LoadingOutlined style={{ fontSize: 40, color: '#7C6AA0' }} spin />} />
         </div>
       </div>
     );
@@ -53,9 +46,7 @@ export default function SearchResults({
   if (error) {
     return (
       <div className={styles.container}>
-        <div className={styles.error}>
-          Erro ao buscar músicas: {error.message}
-        </div>
+        <div className={styles.error}>Erro ao buscar músicas: {error.message}</div>
       </div>
     );
   }

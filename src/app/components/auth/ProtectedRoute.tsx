@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -16,7 +16,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     const checkAuth = () => {
       const token = document.cookie
         .split('; ')
-        .find(row => row.startsWith('access_token='))
+        .find((row) => row.startsWith('access_token='))
         ?.split('=')[1];
 
       if (!token) {
@@ -33,12 +33,14 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   if (isLoading) {
     return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '100vh' 
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
         Carregando...
       </div>
     );
@@ -49,4 +51,4 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   }
 
   return <>{children}</>;
-} 
+}

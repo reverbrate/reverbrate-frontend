@@ -1,7 +1,7 @@
-import { Input } from "antd";
-import React from "react";
-import styles from "./styles.module.scss";
-import { StarSelector } from "../../base/starSelector/starSelector";
+import { Input } from 'antd';
+import React from 'react';
+import styles from './styles.module.scss';
+import { StarSelector } from '../../base/starSelector/starSelector';
 
 interface ReviewFormProps {
   rating: number;
@@ -30,11 +30,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
     >
       <div className={styles.rate}>
         <h3>Nota: </h3>
-        <StarSelector
-          rating={rating}
-          setRating={setRating}
-          disabled={loading}
-        />
+        <StarSelector rating={rating} setRating={setRating} disabled={loading} />
       </div>
 
       <textarea
@@ -42,9 +38,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
         rows={8}
         placeholder="Escreva um comentário..."
         value={comment}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          setComment(e.target.value)
-        }
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value)}
         maxLength={300}
         disabled={loading}
       />

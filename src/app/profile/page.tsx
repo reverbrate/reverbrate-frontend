@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { useQueryClient } from "@tanstack/react-query";
-import Error from "../components/base/error/error";
-import Follow from "../components/follow/follow";
-import FollowSkeleton from "../components/follow/followSkeleton/followSkeleton";
-import List from "../components/list/list";
-import NavBar from "../components/navBar/navBar";
-import ReviewList from "../components/reviewList/reviewList";
-import ReviewListSkeleton from "../components/reviewList/reviewListSkeleton/reviewListSkeleton";
-import UserInfo from "../components/userInfo/userInfo";
-import UserInfoSkeleton from "../components/userInfo/userInfoSkeleton/userInfoSkeleton";
-import { useLists } from "../hooks/useLists";
-import { useProfile } from "../hooks/useProfile";
-import styles from "./styles.module.scss";
+import { useQueryClient } from '@tanstack/react-query';
+import Error from '../components/base/error/error';
+import Follow from '../components/follow/follow';
+import FollowSkeleton from '../components/follow/followSkeleton/followSkeleton';
+import List from '../components/list/list';
+import NavBar from '../components/navBar/navBar';
+import ReviewList from '../components/reviewList/reviewList';
+import ReviewListSkeleton from '../components/reviewList/reviewListSkeleton/reviewListSkeleton';
+import UserInfo from '../components/userInfo/userInfo';
+import UserInfoSkeleton from '../components/userInfo/userInfoSkeleton/userInfoSkeleton';
+import { useLists } from '../hooks/useLists';
+import { useProfile } from '../hooks/useProfile';
+import styles from './styles.module.scss';
 
 export default function Profile() {
   const queryClient = useQueryClient();
   const { getProfile } = useProfile(queryClient);
   const { fetchLists } = useLists();
-  
+
   const { data: profile, isLoading, isFetching, isError } = getProfile();
   const { data: list } = fetchLists();
 
@@ -49,21 +49,14 @@ export default function Profile() {
               {isLoading ? (
                 <FollowSkeleton />
               ) : (
-                profile && (
-                  <Follow network={profile.network} hasFollow={false} />
-                )
+                profile && <Follow network={profile.network} hasFollow={false} />
               )}
             </section>
             <section className={styles.contentWrapper}>
               {isLoading ? (
                 <ReviewListSkeleton />
               ) : (
-                profile && (
-                  <ReviewList
-                    title="Avaliações recentes"
-                    reviews={profile.reviews}
-                  />
-                )
+                profile && <ReviewList title="Avaliações recentes" reviews={profile.reviews} />
               )}
 
               {isLoading ? (

@@ -1,13 +1,9 @@
-import React from "react";
-import styles from "./styles.module.scss";
-import { TrackWithReview } from "@/types/search";
-import BaseReview from "@/app/components/review/review";
+import React from 'react';
+import styles from './styles.module.scss';
+import { TrackWithReview } from '@/types/search';
+import BaseReview from '@/app/components/review/review';
 
-export default function BestResult({
-  track,
-}: {
-  track: TrackWithReview | null;
-}) {
+export default function BestResult({ track }: { track: TrackWithReview | null }) {
   if (!track) return null;
   return (
     <div className={styles.bestResult}>
@@ -29,7 +25,6 @@ export default function BestResult({
           <div className={styles.satarContainer}>
             <BaseReview track={track} />
           </div>
-      
         </div>
         {track.review && (
           <>

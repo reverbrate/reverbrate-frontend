@@ -1,7 +1,7 @@
-"use client";
-import { SkipForwardCircle, SpotifyLogo } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
-import styles from "./styles.module.scss";
+'use client';
+import { SkipForwardCircle, SpotifyLogo } from '@phosphor-icons/react/dist/ssr';
+import Image from 'next/image';
+import styles from './styles.module.scss';
 
 export default function Login() {
   const handleLogin = () => {
@@ -41,17 +41,16 @@ export default function Login() {
 
           <div className={styles.loginContainer}>
             <button className={styles.loginButton} onClick={handleLogin}>
-              {" "}
+              {' '}
               <SpotifyLogo size={32} />
               Continuar com Spotify
             </button>
             <p>
-              Pode ficar tranquilo, nós usamos a sua <br /> conta do Spotify de
-              forma segura!
+              Pode ficar tranquilo, nós usamos a sua <br /> conta do Spotify de forma segura!
             </p>
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}

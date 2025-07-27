@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 interface ProgressBarProps {
   progress: number;
@@ -6,7 +6,7 @@ interface ProgressBarProps {
   onDragUpdate?: (progress: number) => void;
 }
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const ProgressBar = ({ progress, onSeek, onDragUpdate }: ProgressBarProps) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -46,7 +46,7 @@ const ProgressBar = ({ progress, onSeek, onDragUpdate }: ProgressBarProps) => {
         }
       }
     },
-    [isDragging, calculateProgress, onDragUpdate]
+    [isDragging, calculateProgress, onDragUpdate],
   );
 
   const handleMouseUp = useCallback(() => {
@@ -58,16 +58,16 @@ const ProgressBar = ({ progress, onSeek, onDragUpdate }: ProgressBarProps) => {
 
   useEffect(() => {
     if (isDragging) {
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
     } else {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
     }
 
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
     };
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
@@ -80,10 +80,7 @@ const ProgressBar = ({ progress, onSeek, onDragUpdate }: ProgressBarProps) => {
       onTouchMove={(e) => handleMouseMove(e.touches[0] as any)}
       onTouchEnd={handleMouseUp}
     >
-      <div
-        className={styles.progressBarFill}
-        style={{ width: `${displayProgress}%` }}
-      ></div>
+      <div className={styles.progressBarFill} style={{ width: `${displayProgress}%` }}></div>
     </div>
   );
 };

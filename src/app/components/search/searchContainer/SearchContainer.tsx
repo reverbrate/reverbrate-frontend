@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useSearch } from "../../../hooks/useSearch";
-import { useSearchContext } from "../../../contexts/SearchContext";
-import SearchResults from "../searchResult/SearchResults";
-import RecentActivity from "../../recentActivity/recentActivity";
-import { ArtistItem, AlbumItem, TrackWithReview } from "@/types/search";
-import { UserSearchResult } from "@/types/user";
-import { useQuery } from "@tanstack/react-query";
-import { UserApi } from "@/infra/api/user";
-import Rankings from "../../rankings/rankings";
-import PopularAvaliators from "../../popularAvaliators/popularAvaliators";
-import styles from "./styles.module.scss";
+import { useState, useEffect } from 'react';
+import { useSearch } from '../../../hooks/useSearch';
+import { useSearchContext } from '../../../contexts/SearchContext';
+import SearchResults from '../searchResult/SearchResults';
+import RecentActivity from '../../recentActivity/recentActivity';
+import { ArtistItem, AlbumItem, TrackWithReview } from '@/types/search';
+import { UserSearchResult } from '@/types/user';
+import { useQuery } from '@tanstack/react-query';
+import { UserApi } from '@/infra/api/user';
+import Rankings from '../../rankings/rankings';
+import PopularAvaliators from '../../popularAvaliators/popularAvaliators';
+import styles from './styles.module.scss';
 
 export default function SearchContainer() {
   const { searchQuery } = useSearchContext();
-  const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const { searchTracks, searchAlbums, searchArtists } = useSearch();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function SearchContainer() {
     error: errorTracks,
   } = searchTracks({
     query: debouncedQuery,
-    type: "track",
+    type: 'track',
     limit: 40,
     offset: 0,
   });
@@ -62,31 +62,28 @@ export default function SearchContainer() {
     isLoading: isLoadingUsers,
     error: errorUsers,
   } = useQuery({
-    queryKey: ["userSearch", debouncedQuery, 20, 0],
+    queryKey: ['userSearch', debouncedQuery, 20, 0],
     queryFn: () => UserApi.searchUsers(debouncedQuery, 20, 0),
     enabled: !!debouncedQuery,
     retry: false,
   });
   function isApiError(error: unknown): error is { status: number } {
     return (
-      typeof error === "object" &&
+      typeof error === 'object' &&
       error !== null &&
-      "status" in error &&
-      typeof (error as any).status === "number"
+      'status' in error &&
+      typeof (error as any).status === 'number'
     );
   }
 
   const users: UserSearchResult[] =
-    isApiError(errorUsers) && errorUsers.status === 404
-      ? []
-      : userData?.data || [];
+    isApiError(errorUsers) && errorUsers.status === 404 ? [] : userData?.data || [];
 
   const tracks: TrackWithReview[] = tracksData?.tracks?.data || [];
   const albums: AlbumItem[] = albumsData?.albums?.data || [];
   const artists: ArtistItem[] = artistsData?.artists?.data || [];
 
-  const isLoading =
-    isLoadingTracks || isLoadingAlbums || isLoadingArtists || isLoadingUsers;
+  const isLoading = isLoadingTracks || isLoadingAlbums || isLoadingArtists || isLoadingUsers;
   const error =
     errorTracks ||
     errorAlbums ||

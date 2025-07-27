@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import style from "./styles.module.scss";
-import { useReviews } from "../../hooks/useReviews";
-import { Carousel } from "antd";
-import RecentActivitySkeleton from "./RecentActivitySkeleton";
-import CardReview from "../cardReview/cardReview";
+import React from 'react';
+import style from './styles.module.scss';
+import { useReviews } from '../../hooks/useReviews';
+import { Carousel } from 'antd';
+import RecentActivitySkeleton from './RecentActivitySkeleton';
+import CardReview from '../cardReview/cardReview';
 
 export default function RecentActivity() {
   const { fetchReviews } = useReviews();
@@ -21,9 +21,7 @@ export default function RecentActivity() {
   return (
     <div className={style.container}>
       <h2 className={style.title}>Atividades Recentes</h2>
-      {isLoading && (
-        <RecentActivitySkeleton />
-      )}
+      {isLoading && <RecentActivitySkeleton />}
       {error && <div>Erro ao carregar avaliações.</div>}
       {!isLoading && !error && reviews.length === 0 && (
         <h3>Faça uma avaliação para ver as atividades recentes!</h3>
@@ -39,19 +37,17 @@ export default function RecentActivity() {
           responsive={[
             {
               breakpoint: 1200,
-              settings: { slidesToShow: 3 }
+              settings: { slidesToShow: 3 },
             },
             {
               breakpoint: 800,
-              settings: { slidesToShow: 1 }
-            }
+              settings: { slidesToShow: 1 },
+            },
           ]}
         >
           {reviews.map((review) => (
             <div key={review.track_info.id} className={style.carouselContent}>
-              <CardReview
-                review={review}
-              />
+              <CardReview review={review} />
             </div>
           ))}
         </Carousel>

@@ -1,18 +1,18 @@
-import React from "react";
-import styles from "./styles.module.scss";
+import React from 'react';
+import styles from './styles.module.scss';
 import {
   DotsThreeVertical,
   MusicNoteSimple,
   Playlist,
   PencilSimple,
   Trash,
-} from "@phosphor-icons/react/ssr";
-import { Dropdown } from "antd";
-import { useLists } from "@/app/hooks/useLists";
-import AddList from "../listForm/listForm";
-import { useState } from "react";
-import { ListType } from "@/types/lists";
-import toast from "react-hot-toast";
+} from '@phosphor-icons/react/ssr';
+import { Dropdown } from 'antd';
+import { useLists } from '@/app/hooks/useLists';
+import AddList from '../listForm/listForm';
+import { useState } from 'react';
+import { ListType } from '@/types/lists';
+import toast from 'react-hot-toast';
 interface CardListProps {
   listName: string;
   userName: string;
@@ -30,7 +30,7 @@ export default function CardList({
 }: CardListProps) {
   const truncateText = (text: string, maxLength: number = 20) => {
     if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + "...";
+    return text.slice(0, maxLength) + '...';
   };
 
   const { deleteListMutation } = useLists();
@@ -38,10 +38,10 @@ export default function CardList({
   const handleDeleteList = async (listId: string) => {
     await deleteListMutation.mutateAsync(listId, {
       onSuccess: () => {
-        toast.success("Lista deletada com sucesso");
+        toast.success('Lista deletada com sucesso');
       },
       onError: () => {
-        toast.error("Erro ao deletar lista");
+        toast.error('Erro ao deletar lista');
       },
     });
   };
@@ -54,14 +54,14 @@ export default function CardList({
 
   const menuItems = [
     {
-      key: "edit",
+      key: 'edit',
       label: (
         <span
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 8,
-            color: "#010101",
+            color: '#010101',
           }}
           onClick={handleEdit}
         >
@@ -70,14 +70,14 @@ export default function CardList({
       ),
     },
     {
-      key: "delete",
+      key: 'delete',
       label: (
         <span
           style={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 8,
-            color: "#010101",
+            color: '#010101',
           }}
           onClick={async () => await handleDeleteList(listId)}
         >
@@ -107,13 +107,13 @@ export default function CardList({
             <div className={styles.menuIcon}>
               <Dropdown
                 menu={{ items: menuItems }}
-                trigger={["click"]}
+                trigger={['click']}
                 placement="bottomRight"
                 arrow
                 popupRender={(menu: React.ReactNode) => <div>{menu}</div>}
                 className={styles.dropdown}
               >
-                <span style={{ cursor: "pointer" }}>
+                <span style={{ cursor: 'pointer' }}>
                   <DotsThreeVertical size={22} />
                 </span>
               </Dropdown>

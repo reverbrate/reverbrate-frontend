@@ -4,7 +4,7 @@ export class ApiError extends Error {
   constructor(
     message: string,
     public status: number,
-    public statusText: string
+    public statusText: string,
   ) {
     super(message);
     this.name = 'ApiError';
@@ -16,7 +16,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
     throw new ApiError(
       `HTTP error! status: ${response.status}`,
       response.status,
-      response.statusText
+      response.statusText,
     );
   }
 
@@ -27,16 +27,13 @@ async function handleResponse<T>(response: Response): Promise<T> {
   return response.text() as Promise<T>;
 }
 
-export async function apiRequest<T>(
-  endpoint: string,
-  options: RequestInit = {}
-): Promise<T> {
+export async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
 
   const defaultOptions: RequestInit = {
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      Accept: 'application/json',
     },
     credentials: 'include',
     mode: 'cors',
@@ -54,4 +51,4 @@ export async function apiRequest<T>(
 
   const response = await fetch(url, mergedOptions);
   return handleResponse<T>(response);
-} 
+}

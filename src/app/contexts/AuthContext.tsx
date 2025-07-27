@@ -1,8 +1,8 @@
-import { AuthApi } from "@/infra/api/auth";
-import { redirect, usePathname } from "next/navigation";
-import { createContext, useEffect, useState } from "react";
+import { AuthApi } from '@/infra/api/auth';
+import { redirect, usePathname } from 'next/navigation';
+import { createContext, useEffect, useState } from 'react';
 
-const publicRoutes = ["/login", "/signup"];
+const publicRoutes = ['/login', '/signup'];
 
 interface AuthContextType {
   accessToken: string | null;
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setNeedsSignup(needs_signup);
       })
       .catch(() => {
-        redirect("/login");
+        redirect('/login');
       })
       .finally(() => setLoading(false));
   }, [pathname]);
@@ -42,20 +42,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   if (!accessToken && !publicRoutes.includes(pathname)) {
-    redirect("/login");
+    redirect('/login');
   }
 
   if (needsSignup && !publicRoutes.includes(pathname)) {
-    redirect("/signup");
+    redirect('/signup');
   }
 
   if (accessToken && !needsSignup && publicRoutes.includes(pathname)) {
-    redirect("/");
+    redirect('/');
   }
 
   return (
-    <AuthContext.Provider value={{ accessToken, needsSignup }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ accessToken, needsSignup }}>{children}</AuthContext.Provider>
   );
 };

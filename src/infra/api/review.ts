@@ -7,7 +7,6 @@ import {
 } from '../../types/reviews';
 
 export const ReviewsApi = {
-
   getReviews: async (limit = 50, offset = 0): Promise<ReviewsResponse> => {
     return apiRequest<ReviewsResponse>(`/reviews?limit=${limit}&offset=${offset}`);
   },
@@ -36,7 +35,11 @@ export const ReviewsApi = {
     });
   },
 
-  getReviewsByTrackId: async (trackId: string, limit = 20, offset = 0): Promise<ReviewsResponse> => {
+  getReviewsByTrackId: async (
+    trackId: string,
+    limit = 20,
+    offset = 0,
+  ): Promise<ReviewsResponse> => {
     return apiRequest<ReviewsResponse>(`/reviews/track/${trackId}?limit=${limit}&offset=${offset}`);
   },
 };

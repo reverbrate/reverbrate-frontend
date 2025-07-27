@@ -1,7 +1,7 @@
 // Nenhuma alteração necessária aqui. O código anterior está correto.
-import { useEffect, useRef, useState } from "react";
-import styles from "./styles.module.scss";
-import Image from "next/image";
+import { useEffect, useRef, useState } from 'react';
+import styles from './styles.module.scss';
+import Image from 'next/image';
 
 interface ArtistInfoProps {
   uri: string;
@@ -23,9 +23,8 @@ interface PlayerMusicInfoProps {
 const SPEED_PIXELS_PER_SECOND = 40;
 
 function PlayerMusicInfo({ title, artists, album }: PlayerMusicInfoProps) {
-  const artistNames = artists.map((artist) => artist.name).join(", ");
-  const albumImageSrc =
-    album.images.length > 0 ? album.images[0].url : "https://placehold.co/60";
+  const artistNames = artists.map((artist) => artist.name).join(', ');
+  const albumImageSrc = album.images.length > 0 ? album.images[0].url : 'https://placehold.co/60';
 
   const titleRef = useRef<HTMLDivElement>(null);
   const artistRef = useRef<HTMLDivElement>(null);
@@ -64,7 +63,13 @@ function PlayerMusicInfo({ title, artists, album }: PlayerMusicInfoProps) {
 
   return (
     <section className={styles.musicInfoContainer}>
-      <Image src={albumImageSrc} alt={album.name} className={styles.albumImage} width={60} height={60} />
+      <Image
+        src={albumImageSrc}
+        alt={album.name}
+        className={styles.albumImage}
+        width={60}
+        height={60}
+      />
       <div className={styles.musicInfoTextContainer}>
         <div className={styles.scrollWrapper}>
           <div
@@ -75,7 +80,7 @@ function PlayerMusicInfo({ title, artists, album }: PlayerMusicInfoProps) {
             style={titleAnimation}
           >
             {/* A estrutura interna permanece a mesma no JSX */}
-            <span>{title || "Nome da faixa"}</span>
+            <span>{title || 'Nome da faixa'}</span>
             {scrollTitle && <span>{title}</span>}
           </div>
         </div>
@@ -85,7 +90,7 @@ function PlayerMusicInfo({ title, artists, album }: PlayerMusicInfoProps) {
             ref={artistRef}
             style={artistAnimation}
           >
-            <span>{artistNames || "Nomes dos artistas"}</span>
+            <span>{artistNames || 'Nomes dos artistas'}</span>
             {scrollArtist && <span>{artistNames}</span>}
           </div>
         </div>

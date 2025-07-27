@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { MagnifyingGlass, X, XCircle } from '@phosphor-icons/react/dist/ssr';
 
@@ -46,5 +46,5 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
         )}
       </div>
     </div>
-  )
+  );
 }

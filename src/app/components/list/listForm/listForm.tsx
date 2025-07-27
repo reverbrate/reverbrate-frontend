@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import BaseModal from "@/app/components/base/modal/baseModal";
-import styles from "./styles.module.scss";
-import { useState, useEffect } from "react";
-import { useLists } from "@/app/hooks/useLists";
-import { ListType } from "@/types/lists";
-import { toast } from "react-hot-toast";
-import { useQueryClient } from "@tanstack/react-query";
+import BaseModal from '@/app/components/base/modal/baseModal';
+import styles from './styles.module.scss';
+import { useState, useEffect } from 'react';
+import { useLists } from '@/app/hooks/useLists';
+import { ListType } from '@/types/lists';
+import { toast } from 'react-hot-toast';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface AddListProps {
   open: boolean;
@@ -17,7 +17,14 @@ interface AddListProps {
   mode?: 'add' | 'edit';
 }
 
-export default function listForm({ open, onCancel, initialName = '', initialType = 'track', listId, mode = 'add' }: AddListProps) {
+export default function listForm({
+  open,
+  onCancel,
+  initialName = '',
+  initialType = 'track',
+  listId,
+  mode = 'add',
+}: AddListProps) {
   const [type, setType] = useState<ListType>(initialType);
   const [name, setName] = useState(initialName);
   const { createListMutation, updateListMutation } = useLists();
@@ -38,15 +45,15 @@ export default function listForm({ open, onCancel, initialName = '', initialType
         {
           onSuccess: async () => {
             toast.success('Lista editada com sucesso!');
-            await queryClient.invalidateQueries({ queryKey: ["lists"] });
-            await queryClient.invalidateQueries({ queryKey: ["profile"] });
+            await queryClient.invalidateQueries({ queryKey: ['lists'] });
+            await queryClient.invalidateQueries({ queryKey: ['profile'] });
             setName('');
             onCancel();
           },
           onError: () => {
             toast.error('Erro ao editar lista!');
           },
-        }
+        },
       );
     } else {
       await createListMutation.mutateAsync(
@@ -57,15 +64,15 @@ export default function listForm({ open, onCancel, initialName = '', initialType
         {
           onSuccess: async () => {
             toast.success('Lista criada com sucesso!');
-            await queryClient.invalidateQueries({ queryKey: ["lists"] });
-            await queryClient.invalidateQueries({ queryKey: ["profile"] });
+            await queryClient.invalidateQueries({ queryKey: ['lists'] });
+            await queryClient.invalidateQueries({ queryKey: ['profile'] });
             setName('');
             onCancel();
           },
           onError: () => {
             toast.error('Erro ao criar lista!');
           },
-        }
+        },
       );
     }
   };
@@ -96,9 +103,15 @@ export default function listForm({ open, onCancel, initialName = '', initialType
             onChange={(e) => setType(e.target.value as ListType)}
             disabled={mode === 'edit'}
           >
-            <option value="track" className={styles.formSelectOption}>Músicas</option>
-            <option value="album" className={styles.formSelectOption}>Albuns</option>
-            <option value="artist" className={styles.formSelectOption}>Artistas</option>
+            <option value="track" className={styles.formSelectOption}>
+              Músicas
+            </option>
+            <option value="album" className={styles.formSelectOption}>
+              Albuns
+            </option>
+            <option value="artist" className={styles.formSelectOption}>
+              Artistas
+            </option>
           </select>
         </div>
       </form>

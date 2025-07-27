@@ -6,7 +6,8 @@
     "dev": "next dev -H 127.0.0.1",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,scss,css,md,json}\""
   },
   "dependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
@@ -16,8 +17,8 @@
     "next": "15.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "sass": "^1.89.1",
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "sass": "^1.89.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -26,6 +27,9 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "prettier": "^3.6.2",
     "typescript": "^5"
   }
 }

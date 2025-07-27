@@ -10,7 +10,12 @@ interface AddListModalProps {
   title?: string;
 }
 
-export default function AddListModal({ open, onClose, itemId, title = 'Adicionar à lista' }: AddListModalProps) {
+export default function AddListModal({
+  open,
+  onClose,
+  itemId,
+  title = 'Adicionar à lista',
+}: AddListModalProps) {
   const { fetchLists, editListItemsMutation } = useLists();
   const { data, isLoading } = fetchLists();
 
@@ -26,7 +31,7 @@ export default function AddListModal({ open, onClose, itemId, title = 'Adicionar
         onError: () => {
           message.error('Erro ao adicionar música à lista');
         },
-      }
+      },
     );
   };
 
@@ -43,13 +48,14 @@ export default function AddListModal({ open, onClose, itemId, title = 'Adicionar
       ) : (
         <List
           dataSource={data?.data || []}
-          renderItem={list => (
+          renderItem={(list) => (
             <List.Item
               key={list.id}
               onClick={() => handleAddToList(list.id)}
               className={styles.listItem}
             >
-              <Playlist size={24} />{list.name}
+              <Playlist size={24} />
+              {list.name}
             </List.Item>
           )}
           className={styles.listModal}

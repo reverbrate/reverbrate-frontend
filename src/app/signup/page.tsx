@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { CircleNotchIcon, InfoIcon } from "@phosphor-icons/react";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import Input from "../components/base/input/input";
-import { useAuth } from "../hooks/useAuth";
-import styles from "./styles.module.scss";
+import { CircleNotchIcon, InfoIcon } from '@phosphor-icons/react';
+import { redirect } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import Input from '../components/base/input/input';
+import { useAuth } from '../hooks/useAuth';
+import styles from './styles.module.scss';
 
 export default function SignupPage() {
-  const [name, setName] = useState<string>("");
-  const [nickname, setNickname] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [bio, setBio] = useState<string>("");
+  const [name, setName] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [bio, setBio] = useState<string>('');
 
   const [disabled, setDisabled] = useState<boolean>(true);
 
@@ -29,22 +29,30 @@ export default function SignupPage() {
   const handleSignUp = async () => {
     if (disabled) return;
 
-    await signUp.mutateAsync({
-      name: name,
-      nickname: nickname,
-      email: email,
-      bio: bio,
-    }, {
-      onError: (e) => {
-        if (e.message === "HTTP error! status: 400") {
-          toast.error(<p>O e-mail cadastrado deve ser o mesmo da sua conta <span className={styles.spotifyName}>Spotify®</span>.</p>)
-        } else {
-          toast.error(<p>Houve um erro ao tentar cadastrar. Tente novamente mais tarde.</p>)
-        }
-      }
-    });
+    await signUp.mutateAsync(
+      {
+        name: name,
+        nickname: nickname,
+        email: email,
+        bio: bio,
+      },
+      {
+        onError: (e) => {
+          if (e.message === 'HTTP error! status: 400') {
+            toast.error(
+              <p>
+                O e-mail cadastrado deve ser o mesmo da sua conta{' '}
+                <span className={styles.spotifyName}>Spotify®</span>.
+              </p>,
+            );
+          } else {
+            toast.error(<p>Houve um erro ao tentar cadastrar. Tente novamente mais tarde.</p>);
+          }
+        },
+      },
+    );
 
-    redirect("/");
+    redirect('/');
   };
 
   return (
@@ -88,19 +96,14 @@ export default function SignupPage() {
             <span>Informações obrigatórias</span>
           </div>
         </div>
-        <button
-          className={styles.signUpBtn}
-          onClick={handleSignUp}
-          disabled={disabled}
-        >
-          {
-            signUp.isPending ?
-              <div className={styles.loadingWrapper}>
-                <CircleNotchIcon size={24} />
-              </div>
-              :
-              "Confirmar cadastro"
-          }
+        <button className={styles.signUpBtn} onClick={handleSignUp} disabled={disabled}>
+          {signUp.isPending ? (
+            <div className={styles.loadingWrapper}>
+              <CircleNotchIcon size={24} />
+            </div>
+          ) : (
+            'Confirmar cadastro'
+          )}
         </button>
       </section>
     </main>

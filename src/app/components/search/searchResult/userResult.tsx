@@ -12,7 +12,7 @@ export default function UserResult({ users }: UserResultProps) {
     <div className={styles.container}>
       <h2 className={styles.title}>Usuários</h2>
       <div className={styles.userList}>
-        {users.map(user => (
+        {users.map((user) => (
           <UserInfo
             key={user.id}
             id={user.id}
@@ -25,4 +25,4 @@ export default function UserResult({ users }: UserResultProps) {
       </div>
     </div>
   );
-} 
+}

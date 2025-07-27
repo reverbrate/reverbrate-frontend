@@ -1,6 +1,6 @@
-import { Star } from "@phosphor-icons/react";
-import React, { useState } from "react";
-import styles from "./styles.module.scss";
+import { Star } from '@phosphor-icons/react';
+import React, { useState } from 'react';
+import styles from './styles.module.scss';
 
 export const StarSelector: React.FC<{
   rating: number;
@@ -16,10 +16,9 @@ export const StarSelector: React.FC<{
         <span
           key={star}
           className={
-            `${styles.star} ` +
-            ((hover || rating) >= star ? styles.filled : styles.unfilled)
+            `${styles.star} ` + ((hover || rating) >= star ? styles.filled : styles.unfilled)
           }
-          style={{ cursor: disabled ? "not-allowed" : "pointer" }}
+          style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}
           onClick={() => !disabled && setRating(star)}
           onMouseEnter={() => !disabled && !disableHover && setHover(star)}
           onMouseLeave={() => !disabled && !disableHover && setHover(0)}
@@ -27,13 +26,13 @@ export const StarSelector: React.FC<{
           role="button"
           aria-label={`Dar nota ${star}`}
           onKeyDown={(e: React.KeyboardEvent<HTMLSpanElement>) => {
-            if (!disabled && (e.key === "Enter" || e.key === " ")) setRating(star);
+            if (!disabled && (e.key === 'Enter' || e.key === ' ')) setRating(star);
           }}
         >
           <Star
             size={size || 22}
-            weight={(hover || rating) >= star ? "fill" : "regular"}
-            color={(hover || rating) >= star ? "#FFD700" : "#ccc"}
+            weight={(hover || rating) >= star ? 'fill' : 'regular'}
+            color={(hover || rating) >= star ? '#FFD700' : '#ccc'}
           />
         </span>
       ))}

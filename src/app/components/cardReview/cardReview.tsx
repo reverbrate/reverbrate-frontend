@@ -1,9 +1,9 @@
-import React from "react";
-import style from "./styles.module.scss";
-import CardBase from "../base/cardBase/cardBase";
-import { StarSelector } from "../base/starSelector/starSelector";
-import Image from "next/image";
-import { Review } from "@/types/reviews";
+import React from 'react';
+import style from './styles.module.scss';
+import CardBase from '../base/cardBase/cardBase';
+import { StarSelector } from '../base/starSelector/starSelector';
+import Image from 'next/image';
+import { Review } from '@/types/reviews';
 
 interface CardReviewProps {
   review: Review;
@@ -18,13 +18,11 @@ function formatRelativeDate(dateString: string): string {
   const diffHour = Math.floor(diffMin / 60);
   const diffDay = Math.floor(diffHour / 24);
 
-  if (diffMin < 1) return "agora mesmo";
-  if (diffMin < 60)
-    return `há ${diffMin} ${diffMin === 1 ? "minuto" : "minutos"}`;
-  if (diffHour < 24)
-    return `há ${diffHour} ${diffHour === 1 ? "hora" : "horas"}`;
-  if (diffDay < 7) return `há ${diffDay} ${diffDay === 1 ? "dia" : "dias"}`;
-  return date.toLocaleDateString("pt-BR");
+  if (diffMin < 1) return 'agora mesmo';
+  if (diffMin < 60) return `há ${diffMin} ${diffMin === 1 ? 'minuto' : 'minutos'}`;
+  if (diffHour < 24) return `há ${diffHour} ${diffHour === 1 ? 'hora' : 'horas'}`;
+  if (diffDay < 7) return `há ${diffDay} ${diffDay === 1 ? 'dia' : 'dias'}`;
+  return date.toLocaleDateString('pt-BR');
 }
 
 export default function CardReview({ review }: CardReviewProps) {
@@ -45,11 +43,7 @@ export default function CardReview({ review }: CardReviewProps) {
               <div className={style.artist}>{review.track_info.artist}</div>
             </div>
             <div className={style.starSelector}>
-              <StarSelector
-                rating={review.rate}
-                setRating={() => {}}
-                disabled
-              />
+              <StarSelector rating={review.rate} setRating={() => {}} disabled />
             </div>
           </div>
         </div>
@@ -66,21 +60,15 @@ export default function CardReview({ review }: CardReviewProps) {
             <div className={style.reviewerInfo}>
               <div className={style.reviewerName}>{review.created_by.name}</div>
               <span>-</span>
-              <div className={style.reviewerNickname}>
-                {review.created_by.nickname}
-              </div>
+              <div className={style.reviewerNickname}>{review.created_by.nickname}</div>
             </div>
-            <div className={style.reviewDate}>
-              {formatRelativeDate(review.created_at)}
-            </div>
+            <div className={style.reviewDate}>{formatRelativeDate(review.created_at)}</div>
           </div>
         </div>
         <div className={style.comment}>
           <i>
             &quot;
-            {review.comment.length > 40
-              ? review.comment.slice(0, 30) + "..."
-              : review.comment}
+            {review.comment.length > 40 ? review.comment.slice(0, 30) + '...' : review.comment}
             &quot;
           </i>
         </div>

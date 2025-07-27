@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
@@ -25,4 +25,4 @@ export function useSearchContext() {
     throw new Error('useSearchContext must be used within a SearchProvider');
   }
   return context;
-} 
+}

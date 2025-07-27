@@ -1,6 +1,6 @@
-import React from "react";
-import { Skeleton } from "antd";
-import styles from "./styles.module.scss";
+import React from 'react';
+import { Skeleton } from 'antd';
+import styles from './styles.module.scss';
 
 export default function RankingTracksSkeleton() {
   return (
@@ -23,7 +23,12 @@ export default function RankingTracksSkeleton() {
                 </div>
                 <div style={{ marginTop: 4, display: 'flex', gap: 2 }}>
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Skeleton.Avatar key={i} size={16} shape="square" style={{ background: 'hsl(255, 20%, 4%)' }} />
+                    <Skeleton.Avatar
+                      key={i}
+                      size={16}
+                      shape="square"
+                      style={{ background: 'hsl(255, 20%, 4%)' }}
+                    />
                   ))}
                 </div>
               </div>
@@ -31,11 +36,16 @@ export default function RankingTracksSkeleton() {
             <div className={styles.trackActions}>
               <div className={styles.usersReview}>
                 {Array.from({ length: 3 }).map((_, i) => (
-                  <Skeleton.Avatar key={i} size={20} shape="square" style={{ background: '    hsl(255, 20%, 4%)' }} />
+                  <Skeleton.Avatar
+                    key={i}
+                    size={20}
+                    shape="square"
+                    style={{ background: '    hsl(255, 20%, 4%)' }}
+                  />
                 ))}
               </div>
               <div className={styles.iconContainer}>
-                <Skeleton.Avatar size={22}  />
+                <Skeleton.Avatar size={22} />
               </div>
             </div>
           </div>
@@ -43,4 +53,4 @@ export default function RankingTracksSkeleton() {
       </div>
     </div>
   );
-} 
+}

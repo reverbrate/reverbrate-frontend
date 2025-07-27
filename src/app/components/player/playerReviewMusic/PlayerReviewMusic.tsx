@@ -1,6 +1,6 @@
-import { StarIcon } from "@phosphor-icons/react";
+import { StarIcon } from '@phosphor-icons/react';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 function PlayerMusicReview() {
   const rating = 3;
